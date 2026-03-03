@@ -1,0 +1,132 @@
+<?php
+session_start();
+include '../classes/auth.php';
+include '../config/connect.php';
+
+$database = (new database)->connection();
+$table = new auth($database);
+
+if(isset($_POST['login'])){
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $user = $table->login($email,$password);
+
+    if($user){
+
+        // IMPORTANT — store user id
+        $_SESSION['user_id'] = $user['id'];
+
+        $_SESSION['username'] = $user['user_name'];
+        $_SESSION['email'] = $user['user_email'];
+        $_SESSION['role'] = $user['role_id'];
+
+        // redirect based on role
+        if($user['role_id'] == 1){
+            header("Location: ../admin/dashboard.php");
+            exit;
+        }
+        elseif($user['role_id'] == 2){
+            header("Location: ../receptionist/index.php");
+            exit;
+        }
+        elseif($user['role_id'] == 3){
+            header("Location: ../staff/index.php");
+            exit;
+        }
+
+    }else{
+        echo "<script>alert('Email or password is incorrect')</script>";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login USer</title>
+    <link rel="stylesheet" href="../asset/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form method="post" >
+          
+            <h1 class="lead fw-bold mb-0 mb-4 text-center">login in </h1>
+
+          <!-- Email input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <input type="email" name="email" id="form3Example3" class="form-control form-control-lg"
+              placeholder="Enter a valid email address" />
+            <label class="form-label" for="form3Example3">Email address</label>
+          </div>
+
+          <!-- Password input -->
+          <div data-mdb-input-init class="form-outline mb-3">
+            <input type="password" name="password" id="form3Example4" class="form-control form-control-lg"
+              placeholder="Enter password" />
+            <label class="form-label" for="form3Example4">Password</label>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- Checkbox -->
+            <div class="form-check mb-0">
+              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+              <label class="form-check-label" for="form2Example3">
+                
+              </label>
+            </div>
+          </div>
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;" name="login">Login</button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="register.php"
+                class="link-danger">Register</a></p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <div
+    class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+    <!-- Copyright -->
+    <div class="text-white mb-3 mb-md-0">
+      Copyright © 2020. All rights reserved.
+    </div>
+    <!-- Copyright -->
+
+    <!-- Right -->
+    <div>
+      <a href="#!" class="text-white me-4">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="#!" class="text-white me-4">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="#!" class="text-white me-4">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="#!" class="text-white">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </div>
+</section>
+</body>
+</html>
+
+
+
