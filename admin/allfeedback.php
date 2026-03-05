@@ -1,11 +1,13 @@
 <?php
-include '../config/connect.php';
-include '../classes/oppointment.php';
+require '../config/connect.php';
+$conn = (new Database)->connection();
 
-$conn = (new database)->connection();
-$sys  = new SalonBookingSystem($conn);
-
-$data = $sys->getConfirmedAppointments();
+$data = $conn->query("
+SELECT f.*, c.name
+FROM feedback f
+JOIN clients c ON f.client_id = c.id
+ORDER BY f.id DESC
+")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -218,98 +220,51 @@ $data = $sys->getConfirmedAppointments();
 
                 </nav>
 
-<h2></h2>
- <div class="card shadow m-5">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-danger">Confirmed Appointments</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                   
-
-<tr>
-<th>Client</th>
-<th>Email</th>
-<th>Service</th>
-<th>Date</th>
-<th>Time</th>
-<th>Stylist</th>
-
-</tr>
-
-<?php foreach($data as $row){ ?>
-
-<tr>
-
-<td><?php echo $row['client_name']; ?></td>
-<td><?php echo $row['email']; ?></td>
-<td><?php echo $row['services']; ?></td>
-<td><?php echo $row['appointment_date']; ?></td>
-<!-- <td>Rs <?php echo $row['price']; ?></td> -->
-
-<td>
-<?php echo date("h:i A", strtotime($row['slot_time'])); ?>
-</td>
-
-<td><?php echo $row['staff_name']; ?></td>
-<td>
-<?php if($row['payment_status'] == 'unpaid'): ?>
-    <a href="payment.php?id=<?php echo $row['id']; ?>" 
-       class="btn btn-success">Take Payment</a>
-<?php else: ?>
-    <a href="invoice.php?id=<?php echo $row['id']; ?>" 
-       class="btn btn-danger">View Invoice</a>
-<?php endif; ?>
-</td>
-</tr>
-
-<?php } ?>
-
-</table>
-</div>
-</div>
-</div>
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; ELegent Salon 2025</span>
+  <section class="allservices mt-5">
+<div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-4">
                     </div>
                 </div>
-            </footer>
-            <!-- End of Footer -->
+            </div>
+              <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-danger">All Feedbacks</h6>
+                        </div>
+                        <div class="card-body">
+                        <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                       <thead>
+                    <tr>
+                        <th>Client Name</th>
+                        <th>Rating</th>
+                        <th>Feedback</th>
+                    </tr>
+                </thead>
+                <tbody>
+                                               <?php 
+            foreach($data as $d): 
+            ?>
+                    <tr>
 
-        </div>
-        <!-- End of Content Wrapper -->
+                        <td><?=$d['name']?></td>
+                        <td><?=$d['rating']?></td>
+                        <td><?=$d['message']?></td>
+      
+            </tr>
+                        
+                        <?php
 
-    </div>
-    <!-- End of Page Wrapper -->
+                           endforeach; 
+                      
+                      ?>
+                   
+                </tbody>
+            </table>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
->
+                    </div>
+</div>
+</div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="../asset/dashboard/vendor/jquery/jquery.min.js"></script>
-    <script src="../asset/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="../asset/dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="../asset/dashboard/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="../asset/dashboard/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="../asset/dashboard/js/demo/chart-area-demo.js"></script>
-    <script src="../asset/dashboard/js/demo/chart-pie-demo.js"></script>
-
-</body>
-
-</html>
