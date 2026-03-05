@@ -55,7 +55,7 @@ if(isset($_POST['edit'])){
       <input type="file" class="form-control" name="image" id="inputPassword4" >
     </div>
   </div>
-  <button type="submit" name="edit" class="btn mt-4 btn-primary"> Edit</button>
+  <button type="submit" name="edit" class="btn mt-4 btn-danger"> Edit</button>
 </form>
 <?php  } ?>
 </div>

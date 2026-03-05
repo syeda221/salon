@@ -183,7 +183,7 @@ if(isset($_POST['add'])){
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-danger" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -208,7 +208,7 @@ if(isset($_POST['add'])){
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button style="background-color:#BD193B" class="btn btn-primary" type="button">
+                                            <button style="background-color:#BD193B" class="btn btn-danger" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -233,7 +233,7 @@ if(isset($_POST['add'])){
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
+                                        <div class="icon-circle bg-danger">
                                             <i class="fas fa-file-alt text-white"></i>
                                         </div>
                                     </div>
@@ -397,7 +397,7 @@ if(isset($_POST['add'])){
         
   
   
-  <button type="submit" name="add" class="btn mt-4 btn-primary"> Add</button>
+  <button type="submit" name="add" class="btn mt-4 btn-danger"> Add</button>
 </form>
 </div>
 </div>

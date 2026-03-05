@@ -10287,7 +10287,7 @@ hospital-user:
       - doctor
       - network
       - patient
-      - primary care
+      - danger care
   styles:
     - solid
   unicode: f80d

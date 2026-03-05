@@ -8,6 +8,7 @@ if(isset($_POST['add'])){
     $name = $_POST['name'];
     $email = $_POST['email'];
     $pass = $_POST['password'];
+     $phone = $_POST['phone'];
     $role_id = $_POST['roleid'];
     $img = $_FILES['image']['name'];
     $imgtmp = $_FILES['image']['tmp_name'];
@@ -189,7 +190,7 @@ if(isset($_POST['add'])){
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-danger" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -214,7 +215,7 @@ if(isset($_POST['add'])){
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button style="background-color:#BD193B" class="btn btn-primary" type="button">
+                                            <button style="background-color:#BD193B" class="btn btn-danger" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -239,7 +240,7 @@ if(isset($_POST['add'])){
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
+                                        <div class="icon-circle bg-danger">
                                             <i class="fas fa-file-alt text-white"></i>
                                         </div>
                                     </div>
@@ -386,14 +387,19 @@ if(isset($_POST['add'])){
   <div class="form-row">
     <div class="form-group col-md-12">
       <label for="inputEmail4">Name</label>
-      <input type="text"  class="form-control" id="inputEmail4" name="name" placeholder="service name">
+      <input type="text"  class="form-control" id="inputEmail4" name="name" placeholder="user name">
     </div>
     <div class="form-group col-md-12">
       <label for="inputPassword4">Email</label>
-      <input type="email" class="form-control" name="email" id="inputPassword4" >
+      <input type="text" class="form-control" name="email" id="inputPassword4" >
     </div>
   </div>
+ 
    <div class="form-row">
+      <div class="form-group col-md-12">
+      <label for="inputEmail4">Phone no</label>
+      <input type="text"  class="form-control" id="inputEmail4" name="phone" >
+    </div>
     <div class="form-group col-md-12">
       <label for="inputEmail4">password</label>
       <input type="password"  class="form-control" id="inputEmail4" name="password" placeholder="service name">
@@ -418,7 +424,7 @@ if(isset($_POST['add'])){
       <input type="file" class="form-control" name="image" id="inputPassword4" >
     </div>
   </div>
-  <button type="submit" name="add" class="btn mt-4 btn-primary"> Add</button>
+  <button type="submit" name="add" class="btn mt-4 btn-danger"> Add</button>
 </form>
 </div>
 </div>

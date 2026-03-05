@@ -260,7 +260,7 @@ if($_SESSION['role'] != 1){
                                             </div>
                                             <h6 class="fw-bolder">Duralux - ADMINUiKit</h6>
                                             <p class="fs-12 fw-normal text-muted text-truncate-3-line">Get started Duralux with Duralux up and running. Duralux bootstrap template docs helps you to get started with simple html codes.</p>
-                                            <a href="javascript:void(0);" class="fs-13 fw-bold text-primary">Get Started &rarr;</a>
+                                            <a href="javascript:void(0);" class="fs-13 fw-bold text-danger">Get Started &rarr;</a>
                                         </div>
                                         <!--! [End] v-pills-general !-->
                                         <!--! [Start] v-pills-applications !-->
@@ -306,7 +306,7 @@ if($_SESSION['role'] != 1){
                                                     <p class="fs-12 text-muted mb-0 text-truncate-3-line">We are ready to build custom applications.</p>
                                                 </div>
                                                 <div class="mt-2 mt-lg-0">
-                                                    <a href="mailto:flexilecode@gmail.com" class="fs-13 fw-bold text-primary">Contact Us &rarr;</a>
+                                                    <a href="mailto:flexilecode@gmail.com" class="fs-13 fw-bold text-danger">Contact Us &rarr;</a>
                                                 </div>
                                             </div>
                                         </div> 
@@ -824,7 +824,7 @@ if($_SESSION['role'] != 1){
                             <div class="d-flex justify-content-between align-items-center flex-column timesheets-body">
                                 <i class="feather-clock fs-1 mb-4"></i>
                                 <p class="text-muted">No started timers found yes!</p>
-                                <a href="javascript:void(0);" class="btn btn-sm btn-primary">Started Timer</a>
+                                <a href="javascript:void(0);" class="btn btn-sm btn-danger">Started Timer</a>
                             </div>
                             <div class="text-center timesheets-footer">
                                 <a href="javascript:void(0);" class="fs-13 fw-semibold text-dark">Alls Timesheets</a>
@@ -950,7 +950,7 @@ if($_SESSION['role'] != 1){
                                     <div class="dropdown-divider"></div>
                                     <a href="javascript:void(0);" class="dropdown-item">
                                         <span class="hstack">
-                                            <i class="wd-10 ht-10 border border-2 border-gray-1 bg-primary rounded-circle me-2"></i>
+                                            <i class="wd-10 ht-10 border border-2 border-gray-1 bg-danger rounded-circle me-2"></i>
                                             <span>Cutomization</span>
                                         </span>
                                     </a>
@@ -1156,7 +1156,7 @@ if($_SESSION['role'] != 1){
                                         </div>
                                     </div>
                                     <div class="progress mt-2 ht-3">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 56%"></div>
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 56%"></div>
                                     </div>
                                 </div>
                             </div>
@@ -1258,7 +1258,7 @@ if($_SESSION['role'] != 1){
     <!--! ================================================================ !-->
     <div class="theme-customizer">
         <div class="customizer-handle">
-            <a href="javascript:void(0);" class="cutomizer-open-trigger bg-primary">
+            <a href="javascript:void(0);" class="cutomizer-open-trigger bg-danger">
                 <i class="feather-settings"></i>
             </a>
         </div>
@@ -1416,7 +1416,7 @@ if($_SESSION['role'] != 1){
                     <a href="javascript:void(0);" class="btn btn-danger" data-style="reset-all-common-style">Reset</a>
                 </div>
                 <div class="flex-fill w-50">
-                    <a href="https://www.themewagon.com/themes/Duralux-admin" target="_blank" class="btn btn-primary">Download</a>
+                    <a href="https://www.themewagon.com/themes/Duralux-admin" target="_blank" class="btn btn-danger">Download</a>
                 </div>
             </div>
         </div>

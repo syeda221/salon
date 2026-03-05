@@ -345,25 +345,25 @@ svg:not(:root).svg-inline--fa {
   position: static;
   width: auto; }
 
-.svg-inline--fa .fa-primary {
-  fill: var(--fa-primary-color, currentColor);
+.svg-inline--fa .fa-danger {
+  fill: var(--fa-danger-color, currentColor);
   opacity: 1;
-  opacity: var(--fa-primary-opacity, 1); }
+  opacity: var(--fa-danger-opacity, 1); }
 
 .svg-inline--fa .fa-secondary {
   fill: var(--fa-secondary-color, currentColor);
   opacity: 0.4;
   opacity: var(--fa-secondary-opacity, 0.4); }
 
-.svg-inline--fa.fa-swap-opacity .fa-primary {
+.svg-inline--fa.fa-swap-opacity .fa-danger {
   opacity: 0.4;
   opacity: var(--fa-secondary-opacity, 0.4); }
 
 .svg-inline--fa.fa-swap-opacity .fa-secondary {
   opacity: 1;
-  opacity: var(--fa-primary-opacity, 1); }
+  opacity: var(--fa-danger-opacity, 1); }
 
-.svg-inline--fa mask .fa-primary,
+.svg-inline--fa mask .fa-danger,
 .svg-inline--fa mask .fa-secondary {
   fill: black; }
 

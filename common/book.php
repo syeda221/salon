@@ -9,7 +9,7 @@ $conn = (new database)->connection();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Book Apppointment</title>
      <!-- basic -->
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -143,15 +143,15 @@ body {
             <div class="row">
                <div class="col-md-12">
                   <div class="titlepage pt-5" >
-                     <h2> <img src="../asset/frontend/images/head.h.png" alt="#"/> Request <span class="white"> A call Back</span></h2>
+                     <h2> <img src="../asset/frontend/images/head.h.png" alt="#"/> Request <span class="white"> Appointment</span></h2>
                   </div>
                </div>
             </div>
-            <div class="row">
+            <div class="row p-5">
                <div class="col-md-10 m-auto">
                 <form action="submit.php" class="main_form" method="POST">
 
-<div class="row">
+<div class="row " >
   <div class="col-md-6 mb-3">
     <label>Full Name</label>
     <input type="text" name="name" class="form-control" required>

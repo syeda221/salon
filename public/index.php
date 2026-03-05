@@ -1,3 +1,19 @@
+<?php
+require '../config/connect.php';
+$conn = (new Database)->connection();
+
+$data = $conn->query("
+SELECT f.*, c.name
+FROM feedback f
+JOIN clients c ON f.client_id = c.id
+ORDER BY f.id DESC
+")->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -26,9 +42,6 @@
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-      <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
    </head>
    <!-- body -->
    <body class="main-layout">
@@ -69,7 +82,7 @@
                         </div>
                      </nav>
                   </div>
-                  <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col logo_section">
+                  <div class="col-xl-2 m-auto col-lg-2 col-md-3 col-sm-3 col logo_section">
                      <div class="full">
                         <div class="center-desk">
                            <div class="logo">
@@ -79,11 +92,7 @@
                      </div>
                   </div>
                   <div class=" book col-xl-5 col-lg-5 col-md-5 col-sm-5">
-                     <!-- <ul class="email">
-                        <li><a href="#">Call: (+71) 1234567890</a></li>
-                        <li><a href="#">Get Your Appointment</a></li>
-                        <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                     </ul> -->
+                   
                      <a href="../auth/login.php" class="auto-ml">
                         <button class="btn">Login</button>
                      </a>
@@ -111,7 +120,7 @@
                               <div class="text-bg">
                                  <span>Welcome to</span>
                                  <h1>Elegant Salon</h1>
-                                  <a href="book.php">Book Now</a>
+                                  <a href="../common/book.php">Book Now</a>
                               </div>
                            </div>
                            <div class="col-md-6">
@@ -131,7 +140,7 @@
                               <div class="text-bg">
                                  <span>Welcome to</span>
                                  <h1>Elegant Salon</h1>
-                                  <a href="book.php">Book Now</a>
+                                  <a href="../common/book.php">Book Now</a>
                                </div>
                            </div>
                            <div class="col-md-6">
@@ -151,7 +160,7 @@
                               <div class="text-bg">
                                  <span>Welcome to</span>
                                  <h1>Elegant Salon</h1>
-                                 <a href="book.php">Book Now</a>
+                                 <a href="../common/book.php">Book Now</a>
                                </div>
                            </div>
                            <div class="col-md-6">
@@ -227,70 +236,77 @@
       <!-- end about -->
       <!-- customer -->
       <div id="customer" class="customer">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="titlepage">
-                     <h2> <img src="../asset/frontend/images/head.png" alt="#"/> Our Customer Feedback</h2>
-                  </div>
-               </div>
-            </div>
-            <div id="myCarousel" class="carousel slide customer_Carousel " data-ride="carousel">
-               <ol class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
-               </ol>
-               <div class="carousel-inner">
-                  <div class="carousel-item active">
-                     <div class="container">
-                        <div class="carousel-caption ">
-                           <div class="test_box">
-                              <!-- <i><img src="../asset/frontend/images/tes.png" alt="#"/></i> -->
-                              <h4>Rohali jonson</h4>
-                              <span>customer</span>
-                              <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined </p>
-                              <img src="../asset/frontend/images/icon.png" alt="#"/>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="carousel-item">
-                     <div class="container">
-                        <div class="carousel-caption">
-                           <div class="test_box">
-                              <!-- <i><img src="../asset/frontend/images/tes.png" alt="#"/></i> -->
-                              <h4>Rohali jonson</h4>
-                              <span>customer</span>
-                              <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined </p>
-                              <img src="../asset/frontend/images/icon.png" alt="#"/>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="carousel-item">
-                     <div class="container">
-                        <div class="carousel-caption">
-                           <div class="test_box">
-                              <!-- <i><img src="../asset/frontend/images/tes.png" alt="#"/></i> -->
-                              <h4>Rohali jonson</h4>
-                              <span>customer</span>
-                              <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined </p>
-                              <img src="../asset/frontend/images/icon.png" alt="#"/>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-               <i class="fa fa-chevron-left" aria-hidden="true"></i>
-               </a>
-               <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-               <i class="fa fa-chevron-right" aria-hidden="true"></i>
-               </a>
+   <div class="container">
+
+      <div class="row">
+         <div class="col-md-12">
+            <div class="titlepage">
+               <h2>
+                  <img src="../asset/frontend/images/head.png" alt="#"/> 
+                  Our Customer Feedback
+               </h2>
             </div>
          </div>
       </div>
+
+      <div id="myCarousel" class="carousel slide customer_Carousel" data-ride="carousel">
+
+         <div class="carousel-inner">
+
+         <?php if(!empty($data)): ?>
+
+            <?php 
+            $first = true; 
+            foreach($data as $f): 
+            ?>
+
+               <div class="carousel-item <?= $first ? 'active' : '' ?>">
+                  <div class="container">
+                  <div class="carousel-caption">
+                     <div class="test_box">
+                        <h4><?= htmlspecialchars($f['name']) ?></h4>
+                        <span><?= htmlspecialchars($f['rating']) ?>/5</span>
+                        <p><?= htmlspecialchars($f['message']) ?></p>
+                        <img src="../asset/frontend/images/icon.png" alt="#"/>
+                     </div>
+                     </div>
+                  </div>
+               </div>
+
+            <?php 
+            $first = false; 
+            endforeach; 
+            ?>
+
+         <?php else: ?>
+
+            <div class="carousel-item active">
+               <div class="carousel-caption">
+                  <div class="test_box">
+                     <h4>No Feedback Yet</h4>
+                     <p>Be the first to give feedback 😊</p>
+                  </div>
+               </div>
+            </div>
+
+         <?php endif; ?>
+
+         </div>
+
+         <!-- Controls -->
+         <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+         </a>
+
+         <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+         </a>
+
+      </div>
+
+   </div>
+</div>
+                 
       <!-- end customer -->
       </div>
       <!--  contact -->
@@ -313,8 +329,8 @@
         </p>
 
         <!-- Contact Info -->
-        <div style="margin-bottom:40px; font-size:large;">
-            <p style="font-size:1.1rem;"><strong>Email:</strong> info@yoursalon.com</p>
+        <div style="margin-bottom:40px; font-size:large; ">
+            <p style="font-size:1.1rem;"><strong>Email:</strong> info@yoursalon.com</p> <br>
             <p style="font-size:1.1rem;"><strong>Phone:</strong> +92 300 1234567</p>
             <p style="font-size:1.1rem;"><strong>Address:</strong> Your Salon Street, Your City, Pakistan</p>
         </div>

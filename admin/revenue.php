@@ -1,6 +1,5 @@
 <?php
-require '../config/connect.php';
-$conn = (new Database)->connection();
+
 
 /* ==============================
    TOTAL REVENUE
