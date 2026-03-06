@@ -53,8 +53,8 @@ $user= $table->profAll($id);
                     <!-- Profile Image -->
                     <img src="../asset/images/users/<?=$user['user_img']?>" 
                          class="rounded-circle border border-5 border-primary mb-3"
-                         width="123" height="120" 
-                         style="object-fit:cover;" 
+                          
+                         style="object-fit:cover;width:130; height:130" 
                          alt="User Image">
 
                     <!-- User Name -->
