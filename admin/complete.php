@@ -8,4 +8,4 @@ $appointment_id = $_GET['id']; // or from POST
 
 $system->completeAfterPayment($appointment_id);
 $feedback_link = 
-"http://localhost/try/admin/feedback.php?appointment_id=".$appointment_id;
+"http://localhost/try/common/feedback.php?appointment_id=".$appointment_id;

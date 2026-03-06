@@ -1,4 +1,8 @@
 <?php
+session_start();
+if($_SESSION['role'] != 2 && $_SESSION['role'] != 1){
+    header("location:../auth/login.php");
+}
 include '../config/connect.php';
 include '../classes/oppointment.php';
 

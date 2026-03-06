@@ -1,14 +1,19 @@
-<?php
-require '../config/connect.php';
-$conn = (new Database)->connection();
+<?php include '../config/connect.php'; 
+include '../classes//inventory.php';
+$conn = ( new database)->connection();
+$table = new Inventory($conn);
 
-$data = $conn->query("
-SELECT f.*, c.name
-FROM feedback f
-JOIN clients c ON f.client_id = c.id
-ORDER BY f.id DESC
-")->fetchAll(PDO::FETCH_ASSOC);
+if(isset($_POST['add'])){
+    $name = $_POST['name'];
+    $quantity = $_POST['quan'];
+    $limit = $_POST['limit'];
+  
+    if($table->add($name,$quantity,$limit)){
+        echo "<script>alert('added')</script>";
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +25,7 @@ ORDER BY f.id DESC
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ADMIN LDashboard</title>
+    <title>Salon Elegent</title>
 
     <!-- Custom fonts for this template-->
     <link href="../asset/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -76,8 +81,8 @@ ORDER BY f.id DESC
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="pending.php">Pending Appointment</a>
-                        <a class="collapse-item" href="confirmed.php">Booked Appointments</a>
+                        <a class="collapse-item" href="../common/pending.php">Pending Appointment</a>
+                        <a class="collapse-item" href="../common/confirmed.php">Booked Appointments</a>
                     </div>
                 </div>
             </li>
@@ -130,8 +135,8 @@ ORDER BY f.id DESC
                 </a>
                 <div id="collapseser" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="../auth/addinventory.php">Add Inventory</a>
-                        <a class="collapse-item" href="../auth/inventory.php">View Inventory</a>
+                        <a class="collapse-item" href="addinventory.php">Add Inventory</a>
+                        <a class="collapse-item" href="../auth/../common/inventory.php">View Inventory</a>
                       
                     </div>
                 </div>
@@ -145,14 +150,13 @@ ORDER BY f.id DESC
             </li>
             
 
-            <!-- Nav Item - Tables -->
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="tables.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li> -->
             <li class="nav-item">
-                <a class="nav-link" href="../auth/profile.php">
+                <a class="nav-link" href="../common/allfeedback.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Feedbacks</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../auth/../common/profile.php">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Profile</span></a>
             </li>
@@ -220,51 +224,74 @@ ORDER BY f.id DESC
 
                 </nav>
 
-  <section class="allservices mt-5">
-<div class="container">
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-4">
+        <div class="container" >
+        <div class="row">
+        <h1 class="m-auto mb-5 mt-5 col-5">Add New Inventory</h1>
+        </div>
+<div class="row">
+    <form class="m-auto col-6" method="post" enctype="multipart/form-data">
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">Product Name</label>
+      <input type="text"  class="form-control" id="inputEmail4" name="name" placeholder="Product name">
+    </div>
+    <div class="form-group col-md-12">
+      <label for="inputPassword4">Quantity</label>
+      <input type="number" class="form-control" name="quan" id="inputPassword4" >
+    </div>
+  </div>
+   <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">Minimum Limit</label>
+      <input type="number"  class="form-control" id="inputEmail4" name="limit" placeholder="Minimum Limit..">
+    </div>
+    
+  </div>
+        
+  
+  
+  <button type="submit" name="add" class="btn mt-4 btn-danger"> Add</button>
+</form>
+</div>
+</div>
+ <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; ELegent Salon 2025</span>
                     </div>
                 </div>
-            </div>
-              <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-danger">All Feedbacks</h6>
-                        </div>
-                        <div class="card-body">
-                        <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                       <thead>
-                    <tr>
-                        <th>Client Name</th>
-                        <th>Rating</th>
-                        <th>Feedback</th>
-                    </tr>
-                </thead>
-                <tbody>
-                                               <?php 
-            foreach($data as $d): 
-            ?>
-                    <tr>
+            </footer>
+            <!-- End of Footer -->
 
-                        <td><?=$d['name']?></td>
-                        <td><?=$d['rating']?></td>
-                        <td><?=$d['message']?></td>
-      
-            </tr>
-                        
-                        <?php
+        </div>
+        <!-- End of Content Wrapper -->
 
-                           endforeach; 
-                      
-                      ?>
-                   
-                </tbody>
-            </table>
+    </div>
+    <!-- End of Page Wrapper -->
 
-                    </div>
-</div>
-</div>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+>
 
+    <!-- Bootstrap core JavaScript-->
+    <script src="../asset/dashboard/vendor/jquery/jquery.min.js"></script>
+    <script src="../asset/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../asset/dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../asset/dashboard/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../asset/dashboard/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../asset/dashboard/js/demo/chart-area-demo.js"></script>
+    <script src="../asset/dashboard/js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>

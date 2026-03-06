@@ -16,7 +16,7 @@ $table = new users($conn);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ADMIN LDashboard</title>
+    <title>Salon Elegent</title>
 
     <!-- Custom fonts for this template-->
     <link href="../asset/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -72,8 +72,8 @@ $table = new users($conn);
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="pending.php">Pending Appointment</a>
-                        <a class="collapse-item" href="confirmed.php">Booked Appointments</a>
+                        <a class="collapse-item" href="../common/pending.php">Pending Appointment</a>
+                        <a class="collapse-item" href="../common/confirmed.php">Booked Appointments</a>
                     </div>
                 </div>
             </li>
@@ -126,8 +126,8 @@ $table = new users($conn);
                 </a>
                 <div id="collapseser" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="../auth/addinventory.php">Add Inventory</a>
-                        <a class="collapse-item" href="../auth/inventory.php">View Inventory</a>
+                        <a class="collapse-item" href="addinventory.php">Add Inventory</a>
+                        <a class="collapse-item" href="../auth/../common/inventory.php">View Inventory</a>
                       
                     </div>
                 </div>
@@ -141,14 +141,13 @@ $table = new users($conn);
             </li>
             
 
-            <!-- Nav Item - Tables -->
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="tables.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li> -->
             <li class="nav-item">
-                <a class="nav-link" href="../auth/profile.php">
+                <a class="nav-link" href="../common/allfeedback.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Feedbacks</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../auth/../common/profile.php">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Profile</span></a>
             </li>
@@ -220,9 +219,7 @@ $table = new users($conn);
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-8"><h2>All <b>Users</b></h2></div>
                     <div class="col-sm-4">
-                       <a href="adduser.php"> <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button></a>
                     </div>
                 </div>
             </div>

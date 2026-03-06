@@ -113,8 +113,8 @@ Select COUNT(*) from feedback")->fetchColumn();
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="pending.php">Pending Appointment</a>
-                        <a class="collapse-item" href="confirmed.php">Booked Appointments</a>
+                        <a class="collapse-item" href="../common/pending.php">Pending Appointment</a>
+                        <a class="collapse-item" href="../common/confirmed.php">Booked Appointments</a>
                         <a class="collapse-item" href="../common/book.php">Book Appointment</a>
                     </div>
                 </div>
@@ -136,12 +136,22 @@ Select COUNT(*) from feedback")->fetchColumn();
 
             <!-- inventory view -->
             <li class="nav-item">
-                <a class="nav-link" href="../auth/inventory.php">
+                <a class="nav-link" href="../auth/../common/inventory.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>View Inventory</span></a>
             </li>
+               <li class="nav-item">
+                <a class="nav-link" href="../common/allfeedback.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>View Feedbacks</span></a>
+            </li>
+               <li class="nav-item">
+                <a class="nav-link" href="clients.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Client</span></a>
+            </li>
             <li class="nav-item">
-                <a class="nav-link" href="../auth/profile.php">
+                <a class="nav-link" href="../auth/../common/profile.php">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Profile</span></a>
             </li>

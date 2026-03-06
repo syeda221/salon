@@ -246,10 +246,10 @@ public function getConfirmedAppointments(){
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'salonelegent@gmail.com';
-        $mail->Password   = 'salonelegent22';
+        $mail->Password   = 'bwtdngefdbdvqtvf';
         $mail->SMTPSecure = 'tls';
         $mail->Port       = 587;
-        $mail->setFrom('salonelelegent@gmail.com','Salon Booking');
+        $mail->setFrom('salonelegent@gmail.com','Salon Booking');
         $mail->addAddress($to);
 
         $mail->isHTML(true);
@@ -283,7 +283,7 @@ public function completeAfterPayment($appointment_id){
 
     // 3️⃣ Generate feedback link
     $feedback_link = 
-    "http://localhost/try/admin/feedback.php?appointment_id=".$appointment_id;
+    "http://localhost/try/common/feedback.php?appointment_id=".$appointment_id;
 
     // 4️⃣ Email content
     $message = "

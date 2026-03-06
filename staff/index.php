@@ -114,7 +114,7 @@ $appointments = $stmt->fetchAll();
             </li>
             <br>
               <li class="nav-item">
-                <a class="nav-link" href="../auth/profile.php">
+                <a class="nav-link" href="../auth/../common/profile.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Profile</span></a>
             </li>

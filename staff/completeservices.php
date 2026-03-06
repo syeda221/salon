@@ -4,7 +4,9 @@ include '../config/connect.php';
 
 $conn = (new database)->connection();
 
-$user_id = $_SESSION['user_id'];
+if(!$user_id = $_SESSION['user_id']){
+    header("location:../auth/login.php");
+}
 
 /* GET staff.id using user_id */
 $stmt = $conn->prepare("SELECT * FROM staff WHERE user_id = ?");
@@ -13,6 +15,7 @@ $staff = $stmt->fetch();
 
 if(!$staff){
     die("Staff record not found");
+
 }
 
 $staff_id = $staff['id'];
@@ -114,7 +117,7 @@ $appointments = $stmt->fetchAll();
             </li>
             <br>
               <li class="nav-item">
-                <a class="nav-link" href="../auth/profile.php">
+                <a class="nav-link" href="../auth/../common/profile.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Profile</span></a>
             </li>
@@ -169,7 +172,6 @@ $appointments = $stmt->fetchAll();
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <!-- <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"> -->
                                 <img class="img-profile "
                                     src="../asset/frontend/images/elogo.png">
                             <!-- Dropdown - User Information -->

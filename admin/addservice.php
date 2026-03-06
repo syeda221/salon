@@ -27,7 +27,7 @@ if(isset($_POST['add'])){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ADMIN LDashboard</title>
+    <title>Salon Elegent</title>
 
     <!-- Custom fonts for this template-->
     <link href="../asset/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -83,8 +83,8 @@ if(isset($_POST['add'])){
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="pending.php">Pending Appointment</a>
-                        <a class="collapse-item" href="confirmed.php">Booked Appointments</a>
+                        <a class="collapse-item" href="../common/pending.php">Pending Appointment</a>
+                        <a class="collapse-item" href="../common/confirmed.php">Booked Appointments</a>
                     </div>
                 </div>
             </li>
@@ -137,8 +137,8 @@ if(isset($_POST['add'])){
                 </a>
                 <div id="collapseser" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="../auth/addinventory.php">Add Inventory</a>
-                        <a class="collapse-item" href="../auth/inventory.php">View Inventory</a>
+                        <a class="collapse-item" href="addinventory.php">Add Inventory</a>
+                        <a class="collapse-item" href="../auth/../common/inventory.php">View Inventory</a>
                       
                     </div>
                 </div>
@@ -152,14 +152,13 @@ if(isset($_POST['add'])){
             </li>
             
 
-            <!-- Nav Item - Tables -->
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="tables.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li> -->
             <li class="nav-item">
-                <a class="nav-link" href="../auth/profile.php">
+                <a class="nav-link" href="../common/allfeedback.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Feedbacks</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../auth/../common/profile.php">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Profile</span></a>
             </li>

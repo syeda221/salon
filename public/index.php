@@ -330,9 +330,9 @@ ORDER BY f.id DESC
 
         <!-- Contact Info -->
         <div style="margin-bottom:40px; font-size:large; ">
-            <p style="font-size:1.1rem;"><strong>Email:</strong> info@yoursalon.com</p> <br>
+            <p style="font-size:1.1rem;"><strong>Email:</strong> salonelegent.com</p> <br>
             <p style="font-size:1.1rem;"><strong>Phone:</strong> +92 300 1234567</p>
-            <p style="font-size:1.1rem;"><strong>Address:</strong> Your Salon Street, Your City, Pakistan</p>
+            <p style="font-size:1.1rem;"><strong>Address:</strong> elegent Salon Street, Hyderabad City, Pakistan</p>
         </div>
 
         <!-- Social Media -->
@@ -359,7 +359,7 @@ ORDER BY f.id DESC
                </div>
                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <div class="map-responsive">
-                        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" width="600" height="432" frameborder="0" style="border:0; width: 100%;" allowfullscreen></iframe>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3604.9173234831765!2d68.35111497385658!3d25.374087224516195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x394c70627aa05ad7%3A0x620c3f1e4c9721ba!2sAptech%20Learning%20Latifabad%20Center!5e0!3m2!1sen!2s!4v1772763806064!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                      </div>
                </div>
             </div>
@@ -371,20 +371,13 @@ ORDER BY f.id DESC
          <div class="footer">
             <div class="container">
                <div class="row">
-                  <div class="col-md-8 offset-md-4">
-                     <form class="bottom_form">
-                        <h3>Newsletter</h3>
-                        <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
-                        <button class="sub_btn">subscribe</button>
-                     </form>
-                  </div>
+                  
                </div>
                <div class="row">
                   <div class="col-xl-6 col-md-12">
                      <div class="row">
                         <div class="col-md-7 padd_bottom">
                            <div class="heading3">
-                              <a href="#"><img src="../asset/frontend/images/elogo.png" alt="#"/></a>
                               <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.</p>
                            </div>
                         </div>
@@ -435,9 +428,9 @@ ORDER BY f.id DESC
                   </div>
                </div>
             </div>
-            <div class="copyright">
+            <div class="copyright ">
                <div class="container">
-                  <div class="row">
+                  <div class="row bg-primary">
                      <div class="col-md-12">
                         <p>&copy; All Rights Reserved.Elegent Salon </a></p>
                      </div>

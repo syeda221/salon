@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../config/connect.php';
 include '../classes/oppointment.php';
 
@@ -14,4 +15,8 @@ $_POST['slot_id'],
 $_POST['services']
 );
 
-echo "Booking request sent successfully";
+if(isset($_SESSION['role']) && $_SESSION['role'] == 2){
+    header("Location: ../receptionist/index.php");
+}else{
+    header("Location: ../public/index.php");
+}

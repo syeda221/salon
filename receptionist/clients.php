@@ -1,11 +1,16 @@
+
+
 <?php
+session_start();
+if($_SESSION['role'] != 2){
+    header("location:../auth/login.php");
+}
 include '../config/connect.php';
-include '../classes/oppointment.php';
+include '../classes/clients.php';
 
-$conn = (new database)->connection();
-$sys  = new SalonBookingSystem($conn);
-
-$data = $sys->getConfirmedAppointments();
+$conn=(new database)->connection();
+$sys=new clients($conn);
+$data = $sys->all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +23,7 @@ $data = $sys->getConfirmedAppointments();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ADMIN LDashboard</title>
+    <title>Receptionist Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="../asset/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -33,7 +38,7 @@ $data = $sys->getConfirmedAppointments();
 
 <body id="page-top">
 
-    <!-- Page Wrapper -->
+   <!-- Page Wrapper -->
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -43,7 +48,7 @@ $data = $sys->getConfirmedAppointments();
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                 </div>
-                <div class="sidebar-brand-text mx-3">ADMIN</div>
+                <div class="sidebar-brand-text mx-3">RECEPTIONIST</div>
             </a>
 
             <!-- Divider -->
@@ -61,7 +66,7 @@ $data = $sys->getConfirmedAppointments();
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                
+                Interface
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -74,90 +79,49 @@ $data = $sys->getConfirmedAppointments();
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="pending.php">Pending Appointment</a>
-                        <a class="collapse-item" href="confirmed.php">Booked Appointments</a>
+                        <a class="collapse-item" href="../common/pending.php">Pending Appointment</a>
+                        <a class="collapse-item" href="../common/confirmed.php">Booked Appointments</a>
+                        <a class="collapse-item" href="../common/book.php">Book Appointment</a>
                     </div>
                 </div>
             </li>
            
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Users</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="addusers.php">Add User</a>
-                        <a class="collapse-item" href="allusers.php">Veiw All Users</a>
-                    </div>
-                </div>
-            </li>
-
+           
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
                 
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Services</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="allservices.php">All Services</a>
-                        <a class="collapse-item" href="addservice.php">Add Services</a>
-                       
-                    </div>
-                </div>
-            </li>
-             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseser"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Inventory</span>
-                </a>
-                <div id="collapseser" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="../auth/addinventory.php">Add Inventory</a>
-                        <a class="collapse-item" href="../auth/inventory.php">View Inventory</a>
-                      
-                    </div>
-                </div>
-            </li>
-
+</div>
+             
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="clients.php">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Client's Details</span></a>
-            </li>
+            
             
 
-            <!-- Nav Item - Tables -->
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="tables.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li> -->
+            <!-- inventory view -->
             <li class="nav-item">
-                <a class="nav-link" href="../auth/profile.php">
+                <a class="nav-link" href="../auth/../common/inventory.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>View Inventory</span></a>
+            </li>
+               <li class="nav-item">
+                <a class="nav-link" href="../common/allfeedback.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>View Feedbacks</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../auth/../common/profile.php">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Profile</span></a>
             </li>
+            
+            <!-- logout -->
             <li class="nav-item">
                 <a class="nav-link" href="../auth/logout.php">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Logout</span></a>
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>logout</span></a>
             </li>
 
             <!-- Divider -->
@@ -189,79 +153,79 @@ $data = $sys->getConfirmedAppointments();
                     </button>
 
                     <!-- Topbar Search -->
-                  
-
+                   
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                       
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a style="background-color:#BD193B" class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button style="background-color:#BD193B" class="btn btn-danger" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
 
                         <!-- Nav Item - Alerts -->
                        
-                        </li>
-
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <!-- <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span> -->
-                                <img class="img-profiler"
+                                <img class="img-profile "
                                     src="../asset/frontend/images/elogo.png">
                             </a>
-                            
+                            <!-- Dropdown - User Information -->
+                           
                         </li>
 
                     </ul>
 
                 </nav>
 
-<h2></h2>
- <div class="card shadow m-5">
+
+<div class="card shadow m-5 mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-danger">Confirmed Appointments</h6>
+                            <h6 class="m-0 font-weight-bold text-danger">All Users</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                   
+                       
 
 <tr>
-<th>Client</th>
-<th>Email</th>
-<th>Service</th>
-<th>Date</th>
-<th>Time</th>
-<th>Stylist</th>
+<th>Id</th>
+<th>Cient-Name</th>
+<th>Cient-Email</th>
+<th>Phone no</th>
+
 
 </tr>
-
 <?php foreach($data as $row){ ?>
 
 <tr>
+<td><?php echo $row['id']; ?></td>
 
-<td><?php echo $row['client_name']; ?></td>
+<td><?php echo $row['name']; ?></td>
 <td><?php echo $row['email']; ?></td>
-<td><?php echo $row['services']; ?></td>
-<td><?php echo $row['appointment_date']; ?></td>
-<!-- <td>Rs <?php echo $row['price']; ?></td> -->
+<td><?php echo $row['phone']; ?></td>
 
-<td>
-<?php echo date("h:i A", strtotime($row['slot_time'])); ?>
-</td>
 
-<td><?php echo $row['staff_name']; ?></td>
-<td>
-<?php if($row['payment_status'] == 'unpaid'): ?>
-    <a href="payment.php?id=<?php echo $row['id']; ?>" 
-       class="btn btn-success">Take Payment</a>
-<?php else: ?>
-    <a href="invoice.php?id=<?php echo $row['id']; ?>" 
-       class="btn btn-danger">View Invoice</a>
-<?php endif; ?>
-</td>
 </tr>
 
 <?php } ?>
@@ -271,8 +235,7 @@ $data = $sys->getConfirmedAppointments();
 </div>
 </div>
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+     <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; ELegent Salon 2025</span>
@@ -291,7 +254,7 @@ $data = $sys->getConfirmedAppointments();
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
->
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="../asset/dashboard/vendor/jquery/jquery.min.js"></script>
