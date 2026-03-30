@@ -27,10 +27,15 @@ $user= $table->profAll($id);
       <link rel="icon" href="../asset/frontend/images/fevicon.png" type="image/gif" />
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="../asset/frontend/css/jquery.mCustomScrollbar.min.css">
+      <style>
+        #prof{
+            width:130px;
+             height:130px;
+        }
+      </style>
      <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -51,10 +56,10 @@ $user= $table->profAll($id);
                 <div class="card-body text-center">
 
                     <!-- Profile Image -->
-                    <img src="../asset/images/users/<?=$user['user_img']?>" 
+                    <img id="prof" src="../asset/images/users/<?=$user['user_img']?>" 
                          class="rounded-circle border border-5 border-primary mb-3"
                           
-                         style="object-fit:cover;width:130; height:130" 
+                         style="object-fit:cover;" 
                          alt="User Image">
 
                     <!-- User Name -->

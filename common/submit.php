@@ -17,6 +17,9 @@ $_POST['services']
 
 if(isset($_SESSION['role']) && $_SESSION['role'] == 2){
     header("Location: ../receptionist/index.php");
-}else{
+}elseif(isset($_SESSION['role']) && $_SESSION['role'] == 1){
+    header("Location: ../admin/index.php");
+}
+else{
     header("Location: ../public/index.php");
 }

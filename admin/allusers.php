@@ -236,7 +236,7 @@ $table = new users($conn);
                         <th>Role Id</th>
                         <th>User Name</th>
                         <th>User Email</th>
-                        <th>Actions</th>
+                        <th>profile</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -253,11 +253,8 @@ $table = new users($conn);
                         <td><?=$d['user_name']?></td>
                         <td><?=$d['user_email']?></td>
                         <td>
-							
-	<a href="editservice.php?id=<?=$d['id']?>" id="open-modal-btn"><i class="material-icons">&#xE254;</i></a>
-
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
+							<img style="width:90px;hieght:90px" src="../asset/images/users/<?=$d['user_img'] ?>" alt="">
+  </td>
                     </tr>
                         
                         <?php
